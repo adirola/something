@@ -49,14 +49,16 @@
 							<div class="col-md-3" style="display: inline-block;">
 								{{todo.space}}
 							</div>
-							<div class="col-md-3" style="display: inline-block;">
-								{{todo.isEmpty}}
+							<div class="col-md-3" style="display: inline-block;" ng-if="todo.isEmpty == true">
+								Empty
+							</div>
+							<div class="col-md-3" style="display: inline-block;" ng-if="todo.isEmpty == false">
+								Full
 							</div>
 							<div class="col-md-3" style="display: inline-block;">
 								{{todo.isReserved}}
 							</div>
-							<div style="display: inline-block;">
-								
+							<div class="col-md-3" style="display: inline-block;">
 								<button type="submit" class="btn btn-primary btn-lg" ng-click="reserveParking(todo._id)" ng-if="((todo.isReserved == false ) && (todo.isEmpty == true))">reserve</button>
 							</div>
 						</div>
