@@ -62,9 +62,12 @@ module.exports = function (app) {
         var customError = { 'msg': 'Parking not found' };
         res.send(customError);
       }
-      parking.space = req.body.space;
+      if( req.body.space )
+      {parking.space = req.body.space;}
+    if( req.body.isEmpty )
       parking.isEmpty = req.body.isEmpty;
-    parking.isReserved = req.body.isReserved; 
+  if( req.body.isReserved )
+    parking.isReserved = req.body.isReserved;  
       parking.save(function(err) {
         if (err) {
           res.send(err);
