@@ -38,38 +38,42 @@
 
 		<!-- TODO LIST -->
 		<div id="todo-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
+			
 
 				
 
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
-				<div class="checkbox" ng-repeat="todo in parking track by $index">
-					<label>
-						<div class="col-md-12">
-							<div class="col-md-3" style="display: inline-block;">
-								{{todo.space}}
-							</div>
-							<div class="col-md-3" style="display: inline-block;" ng-if="todo.isEmpty == true">
-								Empty
-							</div>
-							<div class="col-md-3" style="display: inline-block;" ng-if="todo.isEmpty == false">
-								Full
-							</div>
-							<div class="col-md-3" style="display: inline-block;">
-								{{todo.isReserved}}
-							</div>
-							<div class="col-md-3" style="display: inline-block;">
-								<button type="submit" class="btn btn-primary btn-lg" ng-click="reserveParking(todo._id)" ng-if="((todo.isReserved == false ) && (todo.isEmpty == true))">reserve</button>
-							</div>
-						</div>
-					</label>
-				</div>
+				
+				<div class="container">
+  <div class="panel" style="overflow-x:scroll;height:520px;">
+    <table class="table table-bordered table-striped header-fixed" style="border-collapse:collapse;" >
+      <thead class="proTable">
+        <colgroup>
+          <th class="col-sm-1"> Distance </th>
+          <th class="col-sm-1"> is Empty ? </th>
+          <th class="col-sm-1"> is Reserved ? </th>
+          <th class="col-sm-1"> </th>
+        </colgroup>
+      </thead>
+      <tbody  ng-repeat="todo in parking track by $index" >
+        <tr>
+          <td> {{todo.space}} </td>
+          <td> {{todo.isEmpty}} </td>
+          <td> {{todo.isReserved}} </td>
+          <td> 
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="reserveParking(todo._id)" ng-if="((todo.isReserved == false ) && (todo.isEmpty == true))">reserve</button>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 				<p class="text-center" ng-show="loading">
 					<span class="fa fa-spinner fa-spin fa-3x"></span>
 				</p>
 
-			</div>
+			
 		</div>
 
 		<!-- FORM TO CREATE TODOS -->
