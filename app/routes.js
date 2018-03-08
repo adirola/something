@@ -64,9 +64,9 @@ module.exports = function (app) {
       }
       if( req.body.space )
       {parking.space = req.body.space;}
-    if( req.body.isEmpty )
+    if( (req.body.isEmpty===true)||(req.body.isEmpty===false) )
       parking.isEmpty = req.body.isEmpty;
-  if( req.body.isReserved )
+  if( (req.body.isReserved===true)||(req.body.isReserved===false) )
     parking.isReserved = req.body.isReserved;  
       parking.save(function(err) {
         if (err) {
