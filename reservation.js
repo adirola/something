@@ -1,6 +1,11 @@
 var rp = require('request-promise');
 
-var options = {
+setInterval(function() {
+  test();
+}, 5000);
+
+function test(){
+   var options = {
     method: 'GET',
     uri: 'http://finalyearproject.southindia.cloudapp.azure.com:8080/api/parking/58d388afa6e3d7355ce81aa9'
     };
@@ -16,6 +21,9 @@ rp(options)
     .catch(function (err) {
                 console.log(err);
             });
+ 
+}
+
 
 function myFunction() {
     var options = {
